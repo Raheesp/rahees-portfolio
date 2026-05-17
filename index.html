@@ -148,8 +148,8 @@
 
     .hero-inner {
       position: relative; z-index: 1;
-      display: grid; grid-template-columns: 1fr 420px;
-      gap: 6rem; align-items: center;
+      display: grid; grid-template-columns: 1fr;
+      gap: 3rem; align-items: center;
     }
 
     .hero-tag {
@@ -210,38 +210,6 @@
     }
     .btn-ghost:hover { border-color: var(--em); color: var(--em); transform: translateY(-2px); }
 
-    /* Hero right — number panel */
-    .hero-panel {
-      border: 1px solid var(--line); border-radius: var(--r);
-      overflow: hidden; background: var(--ink2);
-    }
-    .panel-header {
-      padding: 1rem 1.5rem; border-bottom: 1px solid var(--line2);
-      display: flex; align-items: center; gap: 0.5rem;
-    }
-    .panel-dot { width: 8px; height: 8px; border-radius: 50%; }
-    .panel-title {
-      font-family: 'JetBrains Mono', monospace; font-size: 0.65rem;
-      color: var(--mid); letter-spacing: 0.1em; margin-left: 0.5rem;
-    }
-    .panel-stats { display: flex; flex-direction: column; }
-    .panel-stat {
-      padding: 1.5rem; border-bottom: 1px solid var(--line2);
-      display: flex; justify-content: space-between; align-items: flex-end;
-      transition: background 0.25s;
-    }
-    .panel-stat:last-child { border-bottom: none; }
-    .panel-stat:hover { background: var(--ink3); }
-    .ps-label {
-      font-size: 0.68rem; color: var(--mid); letter-spacing: 0.1em;
-      text-transform: uppercase; line-height: 1.5; max-width: 150px;
-    }
-    .ps-num {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 2.4rem; font-weight: 600; color: var(--em);
-      letter-spacing: -0.03em; line-height: 1;
-    }
-    .ps-unit { font-size: 1.2rem; }
 
     /* ─── ABOUT STRIP ─── */
     .about-strip {
@@ -542,7 +510,7 @@
       .wrap { padding: 0 1.5rem; }
       footer { padding: 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
       .nav-menu { display: none; }
-      .hero-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .hero-inner { gap: 2rem; }
       .exp-block { grid-template-columns: 1fr; gap: 0.5rem; }
       .exp-block:hover { padding-left: 0; }
       .flagship-top { grid-template-columns: 1fr; }
@@ -595,34 +563,6 @@
           <a href="#projects" class="btn-em">View Projects →</a>
           <a href="https://linkedin.com/in/rahez" target="_blank" rel="noopener" class="btn-ghost">LinkedIn ↗</a>
           <a href="https://github.com/Raheesp" target="_blank" rel="noopener" class="btn-ghost">GitHub ↗</a>
-        </div>
-      </div>
-
-      <!-- Stats panel -->
-      <div class="hero-panel fi">
-        <div class="panel-header">
-          <div class="panel-dot" style="background:#ef4444;"></div>
-          <div class="panel-dot" style="background:#f59e0b;margin-left:4px;"></div>
-          <div class="panel-dot" style="background:#22c55e;margin-left:4px;"></div>
-          <div class="panel-title">rahees.dev — metrics</div>
-        </div>
-        <div class="panel-stats">
-          <div class="panel-stat">
-            <div class="ps-label">Employee records<br />automated via NexusAI</div>
-            <div class="ps-num">6,893<span class="ps-unit">+</span></div>
-          </div>
-          <div class="panel-stat">
-            <div class="ps-label">Recall boost on<br />imbalanced dataset</div>
-            <div class="ps-num">23<span class="ps-unit">%</span></div>
-          </div>
-          <div class="panel-stat">
-            <div class="ps-label">LLM response<br />time reduction</div>
-            <div class="ps-num">35<span class="ps-unit">%</span></div>
-          </div>
-          <div class="panel-stat">
-            <div class="ps-label">B.Tech GPA<br />Anna University</div>
-            <div class="ps-num">7.83</div>
-          </div>
         </div>
       </div>
     </div>
