@@ -146,11 +146,15 @@
       pointer-events: none;
     }
 
+    #hero .wrap {
+      margin-left: 0;
+      padding-left: clamp(1.5rem, 6vw, 5rem);
+    }
     .hero-inner {
       position: relative; z-index: 1;
     }
     .hero-inner > div {
-      max-width: 640px;
+      max-width: 660px;
     }
 
     .hero-tag {
@@ -214,12 +218,12 @@
 
     /* ─── ABOUT STRIP ─── */
     .about-strip {
-      background: var(--em); padding: 1.5rem 0; overflow: hidden;
+      background: var(--em); padding: 1.5rem 0; overflow: hidden; overflow-x: clip;
     }
     .about-strip-inner {
-      display: flex; gap: 4rem; align-items: center;
-      animation: none; white-space: nowrap; justify-content: space-around;
-      flex-wrap: wrap; gap: 2rem;
+      display: flex; align-items: center;
+      justify-content: space-around;
+      flex-wrap: wrap; gap: 1rem 2rem;
     }
     .about-chip {
       display: flex; align-items: center; gap: 0.75rem;
@@ -533,7 +537,8 @@
       .certs-grid { grid-template-columns: 1fr; }
       .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
       .skills-cols { grid-template-columns: 1fr 1fr; }
-      .about-strip-inner { gap: 1.5rem; }
+      .skills-cols .sk-col[style] { grid-column: span 2 !important; }
+      .about-strip-inner { gap: 1rem 1.5rem; }
       .exp-block { grid-template-columns: 1fr; gap: 0.75rem; padding: 2.5rem 0; }
       .exp-block:hover { padding-left: 0; }
     }
@@ -573,6 +578,9 @@
 
       /* Skills */
       .skills-cols { grid-template-columns: 1fr; }
+      .skills-cols .sk-col[style] { grid-column: span 1 !important; }
+      .sk { font-size: 0.68rem; word-break: break-word; }
+      .sk-tags { gap: 0.375rem; }
 
       /* Experience */
       .exp-block { grid-template-columns: 1fr; gap: 0.625rem; padding: 2rem 0; }
