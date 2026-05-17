@@ -148,8 +148,9 @@
 
     .hero-inner {
       position: relative; z-index: 1;
-      display: grid; grid-template-columns: 1fr;
-      gap: 3rem; align-items: center;
+    }
+    .hero-inner > div {
+      max-width: 640px;
     }
 
     .hero-tag {
