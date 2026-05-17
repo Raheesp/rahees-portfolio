@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.82/build/spline-viewer.js"></script>
   <style>
     :root {
       --ink:     #05080f;
@@ -148,13 +149,25 @@
 
     #hero .wrap {
       margin-left: 0;
-      padding-left: clamp(1.5rem, 6vw, 5rem);
+      padding-left: clamp(1.5rem, 5vw, 4rem);
+      max-width: none;
     }
     .hero-inner {
       position: relative; z-index: 1;
+      display: grid; grid-template-columns: 1fr 480px;
+      gap: 2rem; align-items: center;
     }
-    .hero-inner > div {
-      max-width: 660px;
+    .hero-inner > div { max-width: 640px; }
+
+    /* Spline robot container */
+    .hero-robot {
+      width: 100%; height: 520px;
+      position: relative; border-radius: var(--r);
+      overflow: hidden;
+    }
+    .hero-robot spline-viewer {
+      width: 100%; height: 100%;
+      display: block;
     }
 
     .hero-tag {
@@ -529,6 +542,8 @@
       .wrap { padding: 0 1.5rem; }
       .sec { padding: 5rem 0; }
       footer { padding: 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-robot { height: 360px; }
       .flagship-top { grid-template-columns: 1fr; }
       .flagship-left { border-right: none; border-bottom: 1px solid var(--line2); }
       .proj-grid { grid-template-columns: 1fr 1fr; }
@@ -563,7 +578,9 @@
 
       /* Hero */
       #hero { padding-bottom: 40px; }
+      .hero-inner { grid-template-columns: 1fr !important; }
       .hero-inner > div { max-width: 100%; text-align: left; }
+      .hero-robot { display: none; }
       .hero-name { font-size: clamp(2.6rem, 11vw, 3.5rem); line-height: 1; margin-bottom: 1.5rem; }
       .hero-tag { margin-bottom: 1.5rem; }
       .hero-roles { margin-bottom: 1.25rem; }
@@ -657,6 +674,11 @@
           <a href="https://linkedin.com/in/rahez" target="_blank" rel="noopener" class="btn-ghost">LinkedIn ↗</a>
           <a href="https://github.com/Raheesp" target="_blank" rel="noopener" class="btn-ghost">GitHub ↗</a>
         </div>
+      </div>
+
+      <!-- 3D Robot -->
+      <div class="hero-robot">
+        <spline-viewer url="https://prod.spline.design/c37c3994-a3fa-4c0e-bd06-7b5c9ff6944a/scene.splinecode" loading="lazy"></spline-viewer>
       </div>
     </div>
   </div>
