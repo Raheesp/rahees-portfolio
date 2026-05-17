@@ -505,24 +505,105 @@
     .fi { opacity: 0; transform: translateY(26px); transition: opacity 0.6s ease, transform 0.6s ease; }
     .fi.on { opacity: 1; transform: none; }
 
-    /* ─── RESPONSIVE ─── */
+    /* ─── HAMBURGER ─── */
+    .hamburger {
+      display: none; flex-direction: column; justify-content: center;
+      gap: 5px; background: none; border: none; cursor: pointer;
+      padding: 6px; z-index: 210;
+    }
+    .hamburger span {
+      display: block; width: 22px; height: 2px;
+      background: var(--pearl); border-radius: 2px; transition: all 0.3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.open span:nth-child(2) { opacity: 0; transform: translateX(-8px); }
+    .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+    /* ─── RESPONSIVE — tablet ─── */
     @media (max-width: 960px) {
       nav { padding: 0 1.5rem; }
       .wrap { padding: 0 1.5rem; }
+      .sec { padding: 5rem 0; }
       footer { padding: 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
-      .nav-menu { display: none; }
-      .hero-inner { gap: 2rem; }
-      .exp-block { grid-template-columns: 1fr; gap: 0.5rem; }
-      .exp-block:hover { padding-left: 0; }
       .flagship-top { grid-template-columns: 1fr; }
       .flagship-left { border-right: none; border-bottom: 1px solid var(--line2); }
-      .proj-grid { grid-template-columns: 1fr; }
+      .proj-grid { grid-template-columns: 1fr 1fr; }
       .ach-grid { grid-template-columns: 1fr; }
       .edu-row { grid-template-columns: 1fr; }
       .certs-grid { grid-template-columns: 1fr; }
       .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
       .skills-cols { grid-template-columns: 1fr 1fr; }
       .about-strip-inner { gap: 1.5rem; }
+      .exp-block { grid-template-columns: 1fr; gap: 0.75rem; padding: 2.5rem 0; }
+      .exp-block:hover { padding-left: 0; }
+    }
+
+    /* ─── RESPONSIVE — mobile ─── */
+    @media (max-width: 640px) {
+      nav { padding: 0 1.25rem; }
+      .hamburger { display: flex; }
+      .nav-menu {
+        position: fixed; top: 62px; left: 0; right: 0; bottom: 0;
+        background: rgba(5,8,15,0.97); backdrop-filter: blur(20px);
+        flex-direction: column; align-items: center; justify-content: center;
+        gap: 2.5rem; list-style: none;
+        display: none; z-index: 200;
+      }
+      .nav-menu.open { display: flex; }
+      .nav-menu a { font-size: 1.1rem; letter-spacing: 0.1em; }
+      .nav-cta { padding: 0.75rem 2rem !important; font-size: 0.85rem !important; }
+
+      .wrap { padding: 0 1.25rem; }
+      .sec { padding: 4rem 0; }
+
+      /* Hero */
+      #hero { padding-bottom: 40px; }
+      .hero-inner > div { max-width: 100%; text-align: left; }
+      .hero-name { font-size: clamp(2.6rem, 11vw, 3.5rem); line-height: 1; margin-bottom: 1.5rem; }
+      .hero-tag { margin-bottom: 1.5rem; }
+      .hero-roles { margin-bottom: 1.25rem; }
+      .hero-desc { font-size: 0.875rem; margin-bottom: 2rem; max-width: 100%; }
+      .hero-btns { flex-direction: column; gap: 0.75rem; align-items: flex-start; }
+      .btn-em, .btn-ghost { text-align: center; justify-content: center; width: 100%; max-width: 280px; }
+
+      /* About strip */
+      .about-strip { padding: 1.25rem 0; }
+      .about-strip-inner { gap: 0.875rem; padding: 0 1rem; justify-content: flex-start; }
+      .about-chip { font-size: 0.65rem; }
+
+      /* Skills */
+      .skills-cols { grid-template-columns: 1fr; }
+
+      /* Experience */
+      .exp-block { grid-template-columns: 1fr; gap: 0.625rem; padding: 2rem 0; }
+      .exp-title { font-size: 1.35rem; }
+
+      /* Projects */
+      .flagship-left { padding: 1.5rem; }
+      .flagship-right { padding: 1.5rem; }
+      .flagship-bottom { padding: 1.25rem 1.5rem; flex-direction: column; align-items: flex-start; }
+      .proj-grid { grid-template-columns: 1fr; }
+      .proj-h1 { font-size: 1.6rem; }
+
+      /* Achievements */
+      .ach-cell { padding: 1.75rem 1.25rem; gap: 1rem; }
+      .ach-num { font-size: 2.5rem; }
+
+      /* Education */
+      .edu-row { grid-template-columns: 1fr; margin-bottom: 2rem; }
+      .certs-grid { grid-template-columns: 1fr; }
+      .cert-cell:hover { padding-left: 1.75rem; }
+
+      /* Contact */
+      .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .contact-big { font-size: clamp(2rem, 9vw, 3rem); }
+
+      /* Footer */
+      footer { padding: 1.25rem; flex-direction: column; gap: 0.5rem; text-align: center; }
+
+      /* Ticker */
+      .ticker { height: 26px; }
+      .ti { font-size: 0.55rem; padding: 0 1.25rem; }
     }
   </style>
 </head>
@@ -531,7 +612,10 @@
 <!-- NAV -->
 <nav id="nav">
   <div class="logo">MR<span>.dev</span></div>
-  <ul class="nav-menu">
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-menu" id="nav-menu">
     <li><a href="#skills">Skills</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="#projects">Projects</a></li>
@@ -970,6 +1054,20 @@
     let cur = '';
     secs.forEach(s => { if (scrollY >= s.offsetTop - 80) cur = s.id; });
     links.forEach(a => { a.style.color = a.getAttribute('href') === '#'+cur ? 'var(--em)' : ''; });
+  });
+
+  // Hamburger toggle
+  const hamburger = document.getElementById('hamburger');
+  const navMenu = document.getElementById('nav-menu');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    navMenu.classList.toggle('open');
+  });
+  navMenu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      navMenu.classList.remove('open');
+    });
   });
 </script>
 </body>
